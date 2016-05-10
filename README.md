@@ -26,7 +26,7 @@ for i in ./*.wav; do htkname=`echo $i | sed s:.wav:.htk:g`; HCopy -C ./htk_confi
 
 Here are some examples of the usage of DTWave, the command is given first ($) and the program output follows (>).
 
-### Measure a distance between two encoded sound files:
+##### Measure a distance between two encoded sound files:
 $./dtwave_unix64 /fullpath_to/test_files/tui1.htk /fullpath_to/test_files/tui2.htk
 read htk file /fullpath_to/test_files/tui1.htk
 read htk file /fullpath_to/test_files/tui2.htk
@@ -37,13 +37,14 @@ read htk file /fullpath_to/test_files/tui1.htk
 read htk file /fullpath_to/test_files/tui2.htk
 9.962879
 
-### Compute an average sequence of two encoded sound files, the option -w allows to give a weight toward one of the sequence for computing the average. The value must be between 0 and 1, for example -w 0.2 will pull the average toward the second file "tui2.htk", here the average is aimed to be at equal distance from each file (note: because of the way the average is computed it will not fall exactly at the same distance from the two input files, see reference papers):
+##### Compute an average sequence of two encoded sound files:
+the option -w allows to give a weight toward one of the sequence for computing the average. The value must be between 0 and 1, for example -w 0.2 will pull the average toward the second file "tui2.htk", here the average is aimed to be at equal distance from each file (note: because of the way the average is computed it will not fall exactly at the same distance from the two input files, see reference papers):
 $./dtwave_unix64 -w .5 /fullpath_to/test_files/tui1.htk /fullpath_to/test_files/tui2.htk /fullpath_to/test_files/average.htk
 read htk file /fullpath_to/test_files/tui1.htk
 read htk file /fullpath_to/test_files/tui2.htk
 17.334454
 
-### Measure the distances between the original files and the average:
+##### Measure the distances between the original files and the average:
 $./dtwave_unix64 /fullpath_to/test_files/tui1.htk /fullpath_to/test_files/average.htk
 read htk file /fullpath_to/test_files/tui1.htk
 read htk file /fullpath_to/test_files/average.htk
@@ -53,7 +54,7 @@ read htk file /fullpath_to/test_files/tui2.htk
 read htk file /fullpath_to/test_files/average.htk
 9.424361 
 
-### Analyse a directory containing several encoded sound files (compute a pairwise distance matrix and an average sequence using compression/expansion): 
+##### Analyse a directory containing several encoded sound files (compute a pairwise distance matrix and an average sequence using compression/expansion): 
 The program option -a can be ignored and the program will only compute the pairwise distance matrix.
 $./dtwave_unix64 -a /fullpath_to/test_files/
 3 files
