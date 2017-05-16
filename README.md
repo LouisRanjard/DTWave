@@ -22,7 +22,7 @@ Two wav files are provided and have been encoded using HTK (http://htk.eng.cam.a
 HCopy -C ./htk_config/config ./tui1.wav ./test_files/tui1.htk  
 HCopy -C ./htk_config/config ./tui2.wav ./test_files/tui2.htk  
 Or using a shellscript command:  
-for i in ./*.wav; do htkname=`echo $i | sed s:.wav:.htk:g`; HCopy -C ./htk_config/config $i $htkname; done  
+for i in ./*.wav; do htkname=\`echo $i | sed s:.wav:.htk:g\`; HCopy -C ./htk_config/config $i $htkname; done  
 
 Here are some examples of the usage of DTWave, the command is given first ($) and the program output follows (>).
 
@@ -68,9 +68,9 @@ read htk file tui2.htk
 
 The average sequence is saved as the "average" file in the same directory.  
 The pairwise distance matrix is saved in the file "pairwise_distances.csv" that should contains:  
-tui1.htk, , 8.476674, 17.334454, 
-average.htk, , , 9.424397, 
-tui2.htk, , , , 		
+tui1.htk, , 8.476674, 17.334454,   
+average.htk, , , 9.424397,   
+tui2.htk, , , ,   		
 
 
 
@@ -89,10 +89,10 @@ DTWave is provided as is, with no warranty. The developer and any other associat
 ## References:
 
 To cite the program, please refer to this paper:  
-Louis Ranjard, Michael G. Anderson, Matt J. Rayner, Robert B. Payne, Ian McLean, James V. Briskie, Howard A. Ross, Dianne H. Brunton, Sarah M. N. Woolley, Mark E. Hauber, Bioacoustic distances between the begging calls of brood parasites and their host species: a comparison of metrics and techniques, Behavioral Ecology and Sociobiology, 2010. http://dx.doi.org/10.1007/s00265-010-1065-2
+**Louis Ranjard, Michael G. Anderson, Matt J. Rayner, Robert B. Payne, Ian McLean, James V. Briskie, Howard A. Ross, Dianne H. Brunton, Sarah M. N. Woolley, Mark E. Hauber, Bioacoustic distances between the begging calls of brood parasites and their host species: a comparison of metrics and techniques, Behavioral Ecology and Sociobiology, 2010. http://dx.doi.org/10.1007/s00265-010-1065-2**
 
 A technical description of the method is available in:  
-Louis Ranjard, Howard A. Ross, Unsupervised bird song syllable classification using evolving neural networks, Journal of the Acoustical Society of America 123(6):4358-4368, 2008
+**Louis Ranjard, Howard A. Ross, Unsupervised bird song syllable classification using evolving neural networks, Journal of the Acoustical Society of America 123(6):4358-4368, 2008**
 
 
 
