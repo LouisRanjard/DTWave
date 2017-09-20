@@ -95,6 +95,7 @@ dtwave -a ./test_files
 #include <sys/stat.h> 
 #include <dirent.h> 
 #include <string.h>
+#include <unistd.h>
 
 #ifdef BIT64
 typedef struct {/* macosx 64bits */
@@ -635,9 +636,10 @@ void listdir(char *name, dir_t *directo)
 {
 	DIR           *d;
 	struct dirent *dir;
-	int n,numfiles=0;
+	int n, cd, numfiles=0;
 
-	chdir(name); // need to change dir to run stat() in isDir()
+	cd = chdir(name); // need to change dir to run stat() in isDir()
+        //if(cd < 0) printf("cannot change directory to %s\n",name);
 	d = opendir(name);
 	if (d)
 	{
@@ -835,7 +837,7 @@ void print_align_t(align_t *alignment)
 
 int main(int argc, char **argv)
 {
-    int m, n, i, c, idx, l;
+    int m, n, i, c, idx, l, cd;
     int npc, npcd, nseq, largest, previous, mode=0, maxal=0, do_ave=0, do_ce=0;
     int *a, *b, *x, *y, *to_be_updated;
     float weight, *pdist;
@@ -907,7 +909,8 @@ int main(int argc, char **argv)
     printf("optind=%i\n",optind);
     for (n=0;n<=optind;n++) {printf("opt%i=%s\n",n,argv[n]);}
     #endif
-    chdir(argv[optind]); // need to change dir to run stat() in isDir()
+    cd = chdir(argv[optind]); // need to change dir to run stat() in isDir()
+    //if(cd < 0) printf("cannot change directory to %s\n",argv[optind]);
     if (isDir(argv[optind])) {
     	//compute the average of the files in the directory OR PAIRWISE DISTANCE MATRIX!!!
 		mode=1; //to remember for freeing memory
